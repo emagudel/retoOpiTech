@@ -19,9 +19,10 @@ public class DetalleDelProductoEliminado implements Question<Boolean> {
         boolean expectedResult = false;
         WebDriver driver = getProxiedDriver();
         actor.attemptsTo(
+                Wait.aTime(3000),
                 Click.on(ELIMINAR_PRODUCTO),
                 Click.on(BOTON_ELIMINAR_OK),
-                Wait.aTime(5000)
+                Wait.aTime(3000)
         );
         Alert alert = driver.switchTo().alert();
         String messageBookDelete = alert.getText();

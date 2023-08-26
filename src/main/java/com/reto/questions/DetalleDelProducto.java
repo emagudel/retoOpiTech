@@ -18,7 +18,7 @@ public class DetalleDelProducto implements Question<Boolean> {
         boolean resultBookAddProfile = false;
         WebDriver driver = getProxiedDriver();
         actor.attemptsTo(
-                Wait.aTime(5000),
+                Wait.aTime(3000),
                 Scroll.to(MENU_PROFILE),
                 Click.on(MENU_PROFILE)
         );

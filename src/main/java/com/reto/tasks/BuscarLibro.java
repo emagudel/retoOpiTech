@@ -24,34 +24,34 @@ public class BuscarLibro implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Wait.aTime(5000)
+                Wait.aTime(3000)
         );
         WebDriver driver = getProxiedDriver();
         NOMBRE_LIBRO = producto;
-        if (BUSCAR_PRODUCTO.resolveFor(actor).isVisible() && !MSG_NO_ROWS_FOUND.resolveFor(actor).isVisible()) {
-            actor.attemptsTo(
-                    Type.theValue(producto).into(BUSCAR_PRODUCTO)
-            );
+        actor.attemptsTo(
+                Type.theValue(producto).into(BUSCAR_PRODUCTO)
+        );
+        if (!MSG_NO_ROWS_FOUND.resolveFor(actor).isVisible()) {
             WebElement webElementProducto = driver.findElement(By.xpath("//*[@id=\"see-book-" + producto + "\"]"));
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", webElementProducto);
             webElementProducto.click();
             actor.attemptsTo(
-                    Wait.aTime(5000),
+                    Wait.aTime(3000),
                     Scroll.to(AGREGAR_PRODUCTO),
                     Click.on(AGREGAR_PRODUCTO)
             );
             actor.attemptsTo(
-                    Wait.aTime(5000)
+                    Wait.aTime(3000)
             );
             Alert alert = driver.switchTo().alert();
             String messageBookAdded = alert.getText();
             if (messageBookAdded.contains(MESSAGE_BOOK_ADD)) {
                 alert.accept();
-            }else {
+            } else {
                 alert.dismiss();
             }
             BUSQUEDA = true;
-        }else {
+        } else {
             BUSQUEDA = false;
         }
 

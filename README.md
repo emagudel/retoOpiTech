@@ -1,6 +1,6 @@
 # Proyecto Base Screenplay Web - SerenityBDD
 
-Este reto consistirá en automatizar la página de demoqa.com/books, en donde debemos escoger libros al azar.
+Este reto consistirá en automatizar la página de demoqa.com/books, en donde debemos escoger y agregar libros para su respectivas validaciones.
 
 ## Contenido
 

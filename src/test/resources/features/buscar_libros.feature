@@ -17,8 +17,8 @@ Característica: Busqueda de libros
   Esquema del escenario: Buscar un libro que no exista
     Dado que <nombre> ingresa a la pagina
     Y verifico que al loguearse sea el nombre del usuario registrado
-    Cuando el usuario busca el libro "Goku"
+    Cuando el usuario busca el libro "Son Goku"
     Entonces el usuario NO deberia de ver el libro en el profile exitosamente
     Ejemplos:
       | nombre |
-      | Juan   |
+      | Erik   |
