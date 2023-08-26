@@ -12,10 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import static com.reto.userinterface.LoginPage.*;
-import static com.reto.userinterface.ProductoPage.SELECCIONAR_PRODUCTO;
-import static com.reto.util.constant.ConstantManager.USER;
-import static com.reto.util.constant.ConstantManager.USER_PASSWORD;
-import static com.reto.util.constant.ConstantManager.USER_PROFILE;
+import static com.reto.util.constant.ConstantManager.*;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getProxiedDriver;
 

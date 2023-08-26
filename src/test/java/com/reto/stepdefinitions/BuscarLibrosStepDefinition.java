@@ -1,7 +1,9 @@
 package com.reto.stepdefinitions;
 
 import com.reto.interactions.Abrir;
-import com.reto.questions.DetalleDelCarrito;
+import com.reto.questions.DetalleDelProducto;
+import com.reto.questions.DetalleDelProductoEliminado;
+import com.reto.questions.DetalleDelProductoFallido;
 import com.reto.tasks.*;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
@@ -9,14 +11,13 @@ import io.cucumber.java.es.Entonces;
 import io.cucumber.java.es.Y;
 import net.serenitybdd.screenplay.ensure.Ensure;
 
-import static com.reto.util.constant.ConstantManager.USER;
-import static com.reto.util.constant.ConstantManager.USER_PROFILE;
+import static com.reto.util.constant.ConstantManager.*;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.*;
 
 public class BuscarLibrosStepDefinition {
 
-    @Dado("que {word} ingresa a la pagina para buscar libros")
+    @Dado("que {word} ingresa a la pagina")
     public void queElUsuarioIngresaAlaPagina(String nombreActor) {
         theActorCalled(nombreActor).wasAbleTo(
                 Abrir.elNavegador()
@@ -29,24 +30,25 @@ public class BuscarLibrosStepDefinition {
                 Ensure.that(USER).isEqualTo(USER_PROFILE));
     }
 
-    @Y("selecciona la categoria {string} y subcategoria {string}")
-    public void seleccionalacategoriaSubcategoria(String categoria, String subCategoria) {
-        withCurrentActor(Seleccionar.unaCategoria_y_Subcategoria(categoria, subCategoria));
-    }
-
-    @Y("selecciona otra categoria {string} y otra subcategoria {string}")
-    public void seleccionaOtracategoriaOtraSubcategoria(String categoria, String subCategoria) {
-        withCurrentActor(Seleccionar.unaCategoria_y_Subcategoria(categoria, subCategoria));
-    }
-
     @Cuando("el usuario busca el libro {string}")
     public void elUsuarioBuscaEllibro(String producto) {
-        withCurrentActor(Adicionar.unProducto(producto));
+        withCurrentActor(BuscarLibro.unProducto(producto));
     }
 
-    @Entonces("el usuario deberia de ver el detalle del carrito exitosamente")
-    public void elUsuarioDeberiaDeVerElDetalleExitosamente() {
-        theActorInTheSpotlight().should(seeThat(DetalleDelCarrito.esExitoso()));
+    @Entonces("el usuario deberia de ver el libro en el profile exitosamente")
+    public void elUsuarioDeberiaDeVerElLibroExitosamente() {
+        theActorInTheSpotlight().should(seeThat(DetalleDelProducto.esExitoso()));
+    }
+
+    @Entonces("el usuario NO deberia de ver el libro en el profile exitosamente")
+    public void elUsuarioNODeberiaDeVerElLibroExitosamente() {
+        theActorInTheSpotlight().attemptsTo(
+                Ensure.that(BUSQUEDA).isEqualTo(BUSQUEDA_FALLIDA));
+    }
+
+    @Y("luego elimino el libro y verifico que no este presente en el profile")
+    public void luego_elimino_el_libro_y_verifico_que_no_este_presente_en_profile() {
+        theActorInTheSpotlight().should(seeThat(DetalleDelProductoEliminado.esExitoso()));
     }
 
 }

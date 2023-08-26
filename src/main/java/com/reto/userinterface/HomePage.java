@@ -12,20 +12,8 @@ public class HomePage extends PageObject {
             the("Menu")
                     .located(By.className("menu-list"));
 
-    public static final Target MENU =
-            the("Menu")
-                    .located(By.xpath("//span[contains(.,'Menú')]"));
-
-    public static final Target BOTON_POPUP =
-            the("Boton de popup")
-                    .located(By.className("airship-html-prompt-shadow"));
-
-    public static final Target BOTON_COOKIES =
-            the("Boton de cookies")
-                    .located(By.id("testId-accept-cookies-btn"));
-
-    public static final Target BOTON_CARRITO =
-            the("Boton de carrito")
-                    .located(By.id("testId-UserAction-basket"));
+    public static final Target MENU_PROFILE =
+            the("Menu Profile")
+                    .located(By.xpath("//*[@id='item-3']//span[contains(.,'Profile')]"));
 
 }
