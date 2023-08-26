@@ -16,12 +16,13 @@ public class DetalleDelProducto implements Question<Boolean> {
     @Override
     public Boolean answeredBy(Actor actor) {
         boolean resultBookAddProfile = false;
-        WebDriver driver = getProxiedDriver();
+
         actor.attemptsTo(
                 Wait.aTime(3000),
                 Scroll.to(MENU_PROFILE),
                 Click.on(MENU_PROFILE)
         );
+        WebDriver driver = getProxiedDriver();
         resultBookAddProfile = driver.findElement(By.xpath("//*[@id=\"see-book-" + NOMBRE_LIBRO + "\"]")).isDisplayed();
         return resultBookAddProfile;
     }

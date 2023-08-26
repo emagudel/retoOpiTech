@@ -17,13 +17,14 @@ public class DetalleDelProductoEliminado implements Question<Boolean> {
     public Boolean answeredBy(Actor actor) {
         boolean resultBookDeleteProfile;
         boolean expectedResult = false;
-        WebDriver driver = getProxiedDriver();
+
         actor.attemptsTo(
-                Wait.aTime(3000),
+                Wait.aTime(5000),
                 Click.on(ELIMINAR_PRODUCTO),
                 Click.on(BOTON_ELIMINAR_OK),
                 Wait.aTime(3000)
         );
+        WebDriver driver = getProxiedDriver();
         Alert alert = driver.switchTo().alert();
         String messageBookDelete = alert.getText();
         if (messageBookDelete.contains(MESSAGE_BOOK_DELETE)) {
