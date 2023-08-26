@@ -42,7 +42,7 @@ En la rama principal [master](https://github.com/emagudel/retoOpiTech "master") 
 <H2>Pasos para ejecutar el proyecto</H2>
 
 - Se debe primero realizar los pasos de la sección "Pasos para obtener el proyecto de automation"
-- Abrir el proyecto en el IDE de su preferencia que soporte Java, ejecutar el archivo TestRunner, este runner por defecto esta configurado con el tag @RegressionTest para ejecutar todas las pruebas
+- Abrir el proyecto en el IDE de su preferencia que soporte Java, ejecutar el archivo BuscarLibrosRunner.
 
 <H2>Generación de reporte del framework</H2>
 - Ejecute el proyecto, diríjase a la carpeta target/site/serenity y una vez alli abra en el navegador de su preferencia el archivo index
